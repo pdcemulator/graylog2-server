@@ -186,7 +186,6 @@ class SavedSearchControls extends React.Component<Props, State> {
     const { showForm, showList, newTitle, showCSVExport, showShareSearch } = this.state;
     const { viewStoreState: { view, dirty }, theme } = this.props;
 
-
     const loaded = (view && view.id);
     const savedSearchStyle = loaded ? 'star' : 'star-o';
     let savedSearchColor: string = '';
@@ -258,4 +257,8 @@ class SavedSearchControls extends React.Component<Props, State> {
   }
 }
 
-export default connect(SavedSearchControls, { viewStoreState: ViewStore }, ({ viewStoreState }) => ({ viewStoreState }));
+export default connect(
+  withTheme(SavedSearchControls),
+  { viewStoreState: ViewStore },
+  ({ viewStoreState }) => ({ viewStoreState }),
+);
